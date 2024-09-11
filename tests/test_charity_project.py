@@ -381,6 +381,7 @@ def test_update_charity_project(superuser_client, charity_project, json_data,
         PROJECT_DETAILS_URL.format(project_id=charity_project.id),
         json=json_data
     )
+    print(response.content)
     assert response.status_code == 200, (
         'Корректный PATCH-запрос суперпользователя к эндпоинту '
         f'`{PROJECT_DETAILS_URL}` должен вернуть статус-код 200.'
@@ -420,6 +421,7 @@ def test_update_charity_project_full_amount_equal_invested_amount(
             project_id=charity_project_little_invested.id),
         json=json_data,
     )
+    print(response.content)
     assert response.status_code == 200, (
         'Убедитесь, что при редактировании проекта разрешено устанавливать '
         'требуемую сумму больше или равную внесённой. Соответствующий '

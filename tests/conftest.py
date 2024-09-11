@@ -25,7 +25,7 @@ except (NameError, ImportError) as error:
     )
 
 try:
-    from app.core.user import current_superuser, current_user  # noqa
+    from app.core.users import current_superuser, current_user  # noqa
 except (NameError, ImportError) as error:
     raise AssertionError(
         'При импорте объектов `current_superuser, current_user` '
@@ -34,7 +34,7 @@ except (NameError, ImportError) as error:
     )
 
 try:
-    from app.schemas.user import UserCreate  # noqa
+    from app.schemas.users import UserCreate  # noqa
 except (NameError, ImportError) as error:
     raise AssertionError(
         'При импорте схемы `UserCreate` из модуля `app.schemas.user` '
