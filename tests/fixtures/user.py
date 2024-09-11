@@ -5,7 +5,7 @@ from conftest import (
 from fastapi import HTTPException
 from fastapi.testclient import TestClient
 
-from app.models.users import User
+from app.models.user import User
 
 superuser = User(
     id=1,
