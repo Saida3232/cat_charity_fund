@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.api.validators import (check_name_duplicate, check_project_exist,
                                 validate_full_amount)
 from app.core.db import get_async_session
-from app.core.users import current_superuser
+from app.core.user import current_superuser
 from app.crud.projects import charifyproject_crud
 from app.models import Donation
 from app.schemas.projects import (CharityProjectSchemaCreate,

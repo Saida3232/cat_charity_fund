@@ -25,7 +25,7 @@ except (NameError, ImportError) as error:
     )
 
 try:
-    from app.core.users import current_superuser, current_user  # noqa
+    from app.core.user import current_superuser, current_user  # noqa
 except (NameError, ImportError) as error:
     raise AssertionError(
         'При импорте объектов `current_superuser, current_user` '

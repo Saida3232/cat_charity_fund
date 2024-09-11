@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.db import get_async_session
-from app.core.users import current_superuser, current_user
+from app.core.user import current_superuser, current_user
 from app.crud.donations import donations_crud
 from app.models import CharityProject, User
 from app.schemas.donations import DonationCreate, DonationDB, DonationDbForUser
