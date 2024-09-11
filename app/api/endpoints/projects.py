@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
-
+from http import HTTPStatus
 from app.api.validators import (check_name_duplicate, check_project_exist,
                                 validate_full_amount)
 from app.core.db import get_async_session
@@ -19,8 +19,7 @@ router = APIRouter()
 async def get_all_charity_projects(
     session: AsyncSession = Depends(get_async_session)
 ):
-    projects = await charifyproject_crud.multi_get(session)
-    return projects
+    return await charifyproject_crud.multi_get(session)
 
 
 @router.post('/',
@@ -47,7 +46,8 @@ async def partially_update_project(
     project = await check_project_exist(project_id, session)
 
     if project.fully_invested:
-        raise HTTPException(status_code=400, detail='Проект уже закрыт!')
+        raise HTTPException(status_code=HTTPStatus.BAD_REQUEST,
+                            detail='Проект уже закрыт!')
 
     if obj_data.name is not None:
         await check_name_duplicate(obj_data.name, session)
@@ -55,8 +55,7 @@ async def partially_update_project(
     if obj_data.full_amount is not None:
         validate_full_amount(obj_data, project)
 
-    project = await charifyproject_crud.update(project, obj_data, session)
-    return project
+    return await charifyproject_crud.update(project, obj_data, session)
 
 
 @router.delete('/{project_id}',
@@ -68,7 +67,6 @@ async def delete_project(project_id: int,
     project = await check_project_exist(project_id, session)
     if project.invested_amount > 0:
         raise HTTPException(
-            status_code=400,
+            status_code=HTTPStatus.BAD_REQUEST,
             detail='В фонд уже внесли деньги, его нельзя закрыть.')
-    project = await charifyproject_crud.remove(project, session)
-    return project
+    return await charifyproject_crud.remove(project, session)

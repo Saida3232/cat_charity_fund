@@ -17,9 +17,7 @@ class CharityProjectCrud(CrudBase):
             select(CharityProject.id).where(
                 CharityProject.name == project_name)
         )
-        db_project_id = db_project_id.scalars().first()
-
-        return db_project_id
+        return db_project_id.scalars().first()
 
 
 charifyproject_crud = CharityProjectCrud(CharityProject)

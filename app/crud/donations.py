@@ -13,8 +13,7 @@ class CrudDonation(CrudBase):
     ):
         donations = await session.execute(
             select(Donation).where(Donation.user_id == user_id))
-        donations = donations.scalars().all()
-        return donations
+        return donations.scalars().all()
 
 
 donations_crud = CrudDonation(Donation)
