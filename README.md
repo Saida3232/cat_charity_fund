@@ -49,3 +49,7 @@ uvicorn app.main:app
 ```
 http://127.0.0.1:8000/docs
 ```
+
+
+## Автор
+Автор: [Saida](https://github.com/Saida3232)
