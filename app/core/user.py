@@ -11,7 +11,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.config import settings
 from app.core.db import get_async_session
 from app.models.users import User
-from app.schemas.users import UserCreate
+from app.schemas import UserCreate
 
 
 async def get_user_db(session: AsyncSession = Depends(get_async_session)):

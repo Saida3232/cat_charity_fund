@@ -34,7 +34,7 @@ except (NameError, ImportError) as error:
     )
 
 try:
-    from app.schemas.users import UserCreate  # noqa
+    from app.schemas.user import UserCreate  # noqa
 except (NameError, ImportError) as error:
     raise AssertionError(
         'При импорте схемы `UserCreate` из модуля `app.schemas.user` '

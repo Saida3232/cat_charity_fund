@@ -1,1 +1,1 @@
-from .users import UserCreate, UserRead, UserUpdate  # noqa
+from .user import UserCreate, UserRead, UserUpdate  # noqa
