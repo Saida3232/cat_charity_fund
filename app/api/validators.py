@@ -10,7 +10,7 @@ async def check_project_exist(project_id: int,
                               session: AsyncSession) -> CharityProject:
     project = await charifyproject_crud.get(project_id, session)
     if project is None:
-        raise HTTPException(status_code=HTTPStatus.BAD_REQUEST,
+        raise HTTPException(status_code=HTTPStatus.NOT_FOUND,
                             detail='Проект не найден!')
     return project
 
